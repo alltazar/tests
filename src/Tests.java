@@ -1,14 +1,11 @@
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.Test;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNull;
 
 public class Tests {
 
-    @Test
-    void checkSum() {
+    @Test(expected = NullPointerException.class)
+    public void checkSum() {
         Main.Complex c1 = new Main.Complex(23, 62);
         Main.Complex c2 = new Main.Complex(11, 24);
 
@@ -36,12 +33,14 @@ public class Tests {
 
         c1 = null;
         c2 = new Main.Complex(0, -24);
+//
+//        assertNull(Main.Complex.sum(c1, c2));
 
-        assertNull(Main.Complex.sum(c1, c2));
+        assertEquals(new Main.Complex(-33, -24), Main.Complex.sum(c1, c2));
     }
 
     @Test
-    void checkMinus() {
+    public void checkMinus() {
         Main.Complex c1 = new Main.Complex(23, 62);
         Main.Complex c2 = new Main.Complex(11, 24);
 
@@ -64,7 +63,7 @@ public class Tests {
     }
 
     @Test
-    void checkMult() {
+    public void checkMult() {
         Main.Complex c1 = new Main.Complex(1, -5);
         Main.Complex c2 = new Main.Complex(5, 2);
 
