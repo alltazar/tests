@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Tests {
 
@@ -20,6 +23,21 @@ public class Tests {
         c2 = new Main.Complex(55, 24);
 
         assertEquals(new Main.Complex(88, 86), Main.Complex.sum(c1, c2));
+
+        c1 = new Main.Complex(0, 0);
+        c2 = new Main.Complex(55, 24);
+
+        assertEquals(new Main.Complex(55, 24), Main.Complex.sum(c1, c2));
+
+        c1 = new Main.Complex(-33, 0);
+        c2 = new Main.Complex(0, -24);
+
+        assertEquals(new Main.Complex(-33, -24), Main.Complex.sum(c1, c2));
+
+        c1 = null;
+        c2 = new Main.Complex(0, -24);
+
+        assertNull(Main.Complex.sum(c1, c2));
     }
 
     @Test
@@ -38,6 +56,11 @@ public class Tests {
         c2 = new Main.Complex(5, 824);
 
         assertEquals(new Main.Complex(218, -132), Main.Complex.minus(c1, c2));
+
+        c1 = null;
+        c2 = new Main.Complex(5, 824);
+
+        assertNull(Main.Complex.minus(c1, c2));
     }
 
     @Test

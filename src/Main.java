@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.function.Executable;
+
 public class Main {
 
     public static class Complex{
@@ -10,14 +12,24 @@ public class Main {
         }
 
         public static Complex sum(Complex c1, Complex c2){
+            if (c1 == null || c2 == null) {
+                return null;
+            }
             return new Complex(c1.re_ + c2.re_, c1.im_ + c2.im_);
+
         }
 
         public static Complex minus(Complex c1, Complex c2){
+            if (c1 == null || c2 == null) {
+                return null;
+            }
             return new Complex(c1.re_ - c2.re_, c1.im_ - c2.im_);
         }
 
         public static Complex mult(Complex c1, Complex c2){
+            if (c1 == null || c2 == null) {
+                return null;
+            }
             return new Complex(c1.re_*c2.re_ - c1.im_*c2.im_, c1.im_*c2.re_ + c1.re_*c2.im_);
         }
 
@@ -31,7 +43,6 @@ public class Main {
             }
             return false;
         }
-
     }
 
     public static void main(String[] args){
