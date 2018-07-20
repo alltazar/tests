@@ -4,7 +4,7 @@ import static junit.framework.TestCase.assertNull;
 
 public class Tests {
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void checkSum() {
         Main.Complex c1 = new Main.Complex(23, 62);
         Main.Complex c2 = new Main.Complex(11, 24);
@@ -30,13 +30,14 @@ public class Tests {
         c2 = new Main.Complex(0, -24);
 
         assertEquals(new Main.Complex(-33, -24), Main.Complex.sum(c1, c2));
+    }
 
-        c1 = null;
-        c2 = new Main.Complex(0, -24);
-//
-//        assertNull(Main.Complex.sum(c1, c2));
+    @Test(expected = NullPointerException.class)
+    public void checkSumThrowsNPE() {
+        Main.Complex c1 = null;
+        Main.Complex c2 = new Main.Complex(0, -24);
 
-        assertEquals(new Main.Complex(-33, -24), Main.Complex.sum(c1, c2));
+        Main.Complex.sum(c1, c2);
     }
 
     @Test
